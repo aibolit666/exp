@@ -3,5 +3,10 @@
     "id": 0,
     "name": "Minsk",
     "isCapital": true
+  },
+  {
+    "id": 1,
+    "name": "Saint-Petersburg",
+    "isCapital": false
   }
 ]
