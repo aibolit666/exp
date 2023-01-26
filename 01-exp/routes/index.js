@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
 
     const citiesJson = JSON.parse(cities)
 
-    const city = citiesJson.find(city => city.id === req.params.id)
+    const city = citiesJson.find(city => city.id === +req.params.id)
 
     if (city) {
       res.json(city)
