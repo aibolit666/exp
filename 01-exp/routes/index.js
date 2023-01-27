@@ -24,4 +24,17 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  controllers.addCity(req.body)
+    .then(() => {
+      res.status(200)
+      res.end('Saved')
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500)
+      res.end('error')
+    })
+})
+
 module.exports = router
