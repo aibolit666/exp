@@ -1,40 +1,11 @@
 const express = require('express')
 
-const controllers = require('../controllers/cities')
+const apiRouter = require('./api')
+const authRouter = require('./auth')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  controllers.getCities()
-    .then(cities => res.json(cities))
-    .catch(err => {
-      console.log(err);
-      res.status(500)
-      res.end('error')
-    })
-})
-
-router.get('/:id', (req, res) => {
-  controllers.getCity(+req.params.id)
-    .then(city => res.json(city))
-    .catch(err => {
-      console.log(err);
-      res.status(500)
-      res.end('error')
-    })
-})
-
-router.post('/', (req, res) => {
-  controllers.addCity(req.body)
-    .then(() => {
-      res.status(200)
-      res.end('Saved')
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500)
-      res.end('error')
-    })
-})
+router.use('/api', apiRouter)
+router.use('/auth', authRouter)
 
 module.exports = router
